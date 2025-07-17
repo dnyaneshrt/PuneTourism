@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.infeanet.punetourism.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.infeanet.punetourism.ui.home.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.infeanet.punetourism.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_malls"
+        android:name="com.infeanet.punetourism.ui.malls.MallsFragment"
+        android:label="@string/menu_malls"
+        tools:layout="@layout/fragment_malls" />
+
+    <fragment
+        android:id="@+id/nav_places"
+        android:name="com.infeanet.punetourism.ui.places.PlacesFragment"
+        android:label="@string/menu_places"
+        tools:layout="@layout/fragment_places" />
+
+    <fragment
+        android:id="@+id/nav_hotels"
+        android:name="com.infeanet.punetourism.ui.hotels.HotelsFragment"
+        android:label="@string/menu_hotels"
+        tools:layout="@layout/fragment_hotels" />
+    <fragment
+        android:id="@+id/nav_events"
+        android:name="com.infeanet.punetourism.ui.events.EventsFragment"
+        android:label="@string/menu_events"
+        tools:layout="@layout/fragment_events" />
+
+    <fragment
+        android:id="@+id/nav_colleges"
+        android:name="com.infeanet.punetourism.ui.colleges.CollegesFragment"
+        android:label="@string/menu_colleges"
+        tools:layout="@layout/fragment_gallery" />
+
+
+</navigation>

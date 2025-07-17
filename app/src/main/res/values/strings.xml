@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PuneTourism</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Pune Tourism</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_about_pune">About Pune</string>
+    <string name="menu_share_app">Share App</string>
+    <string name="menu_contactus">Contact Us</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_exit">Logout/Exit</string>
+    <string name="menu_colleges">Colleges</string>
+    <string name="menu_events">Events</string>
+    <string name="menu_hotels">Hotels</string>
+    <string name="menu_places">Places</string>
+    <string name="menu_malls">Malls</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_forts">Forts</string>
+</resources>
