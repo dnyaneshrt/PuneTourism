@@ -1,16 +1,23 @@
 package com.infeanet.punetourism;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
@@ -24,10 +31,12 @@ import com.infeanet.punetourism.databinding.ActivityMainBinding;
 import com.infeanet.punetourism.ui.home.HomeFragment;
 import com.infeanet.punetourism.ui.menus_fragment.AboutPuneFragment;
 
+//AppCompatActivity manages Activity life cycle.
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+
 
 
     @Override
@@ -60,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+
     }
 
     @Override
@@ -99,6 +112,40 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.add(R.id.nav_host_fragment_content_main,new AboutPuneFragment());
             fragmentTransaction.commit();
         }
+        if(id==R.id.menu_exit)
+        {
+            exitAlertDialog();
+        }
         return super.onOptionsItemSelected(item);
     }
+
+    private void exitAlertDialog() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Exit!");
+        builder.setIcon(R.drawable.baseline_home_24);
+        builder.setMessage("Do you want to exit App?");
+
+        builder.setPositiveButton("Yes", (dialog, which)-> {
+                    finish();
+                }
+        );
+        builder.setNegativeButton("No", (dialog, which)-> {
+                    dialog.dismiss();
+                }
+        );
+
+        builder.setNeutralButton("Cancel", (dialog, which)-> {
+                    dialog.dismiss();
+                }
+        );
+        builder.show();
+    }
+
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+        exitAlertDialog();
+    }
+
 }

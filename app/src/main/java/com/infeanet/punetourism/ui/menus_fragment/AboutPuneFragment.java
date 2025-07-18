@@ -55,6 +55,10 @@ public class AboutPuneFragment extends Fragment {
                                  }
         );
 
+        //to enable zoom controls
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+
       return view;
     }
 }
