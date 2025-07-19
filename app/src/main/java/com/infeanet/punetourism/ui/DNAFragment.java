@@ -1,4 +1,19 @@
-package com.infeanet.punetourism.ui.hotels;
+package com.infeanet.punetourism.ui;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
+
+import com.infeanet.punetourism.R;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -16,39 +31,33 @@ import androidx.fragment.app.Fragment;
 
 import com.infeanet.punetourism.R;
 
-public class HotelsFragment extends Fragment {
+public class DNAFragment extends Fragment {
 
     WebView webView;
     ProgressBar progressBar;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view= inflater.inflate(R.layout.fragment_d_n_a, container, false);
+        webView=view.findViewById(R.id.webview_dna);
+        progressBar=view.findViewById(R.id.progress_bar_dna);
 
-        View view = inflater.inflate(R.layout.fragment_hotels, container, false);
+        //1. loadUrl is method to load webpages intoyour application.
+        webView.loadUrl("https://github.com/dnyaneshrt");
 
-
-        webView=view.findViewById(R.id.webview_hotels);
-        progressBar=view.findViewById(R.id.progress_bar_hotels);
-
-//1. loadUrl is method to load webpages intoyour application.
-        webView.loadUrl("https://www.luxuryhotelsguides.com/");
-
-//
+        //
         webView.setWebViewClient(new WebViewClient()
                                  {
                                      @Override
-                                     public void onPageStarted(WebView view, String url, Bitmap
-                                             favicon) {
+                                     public void onPageStarted(WebView view, String url, Bitmap favicon) {
                                          super.onPageStarted(view, url, favicon);
                                          progressBar.setVisibility(View.VISIBLE);
                                      }
 
                                      @Override
-                                     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest
-                                             request) {
+                                     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 //                                         Toast.makeText(requireContext(), request, Toast.LENGTH_SHORT).show();
                                          return super.shouldOverrideUrlLoading(view, request);
                                      }

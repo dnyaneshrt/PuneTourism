@@ -19,7 +19,7 @@ public class GalleryFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_colleges, container, false);
+        View view = inflater.inflate(R.layout.fragment_gallery, container, false);
         return view;
     }
 }

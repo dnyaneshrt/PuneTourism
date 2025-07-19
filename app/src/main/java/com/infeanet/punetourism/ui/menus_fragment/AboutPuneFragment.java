@@ -21,6 +21,7 @@ public class AboutPuneFragment extends Fragment {
     WebView webView;
     ProgressBar progressBar;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,4 +62,6 @@ public class AboutPuneFragment extends Fragment {
 
       return view;
     }
+
+
 }

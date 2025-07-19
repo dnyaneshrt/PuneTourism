@@ -28,6 +28,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.infeanet.punetourism.databinding.ActivityMainBinding;
+import com.infeanet.punetourism.ui.DNAFragment;
 import com.infeanet.punetourism.ui.home.HomeFragment;
 import com.infeanet.punetourism.ui.menus_fragment.AboutPuneFragment;
 
@@ -54,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Home Page will be here..", Snackbar.LENGTH_LONG)
                         .setAction("Action", null)
                         .setAnchorView(R.id.fab).show();
+
+                Snackbar mySnackbar = Snackbar.make(view,"Do you want to open DNA's github account?", Snackbar.LENGTH_SHORT);
+                mySnackbar.setAction("Yes",(v) ->{
+                    //show about_Pune fragment there
+                    FragmentManager fragmentManager=getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    fragmentTransaction.add(R.id.nav_host_fragment_content_main,new DNAFragment());
+                    fragmentTransaction.commit();
+                });
+                mySnackbar.show();
+
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -63,15 +75,12 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
                 R.id.nav_colleges, R.id.nav_events, R.id.nav_hotels,
-                R.id.nav_malls, R.id.nav_places)
+                R.id.nav_malls, R.id.nav_places,R.id.nav_forts)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
-
 
     }
 
@@ -89,17 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.menu_settings) {
-//            Toast.makeText(this, "Setting clicked", Toast.LENGTH_SHORT).show();
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -115,6 +113,20 @@ public class MainActivity extends AppCompatActivity {
         if(id==R.id.menu_exit)
         {
             exitAlertDialog();
+        }
+        if(id==R.id.menu_settings)
+        {
+//            Toasty.success(MainActivity.this, "Success!", Toast.LENGTH_SHORT, true).show();
+//            Toasty
+        }
+        if(id==R.id.menu_share_app)
+        {
+            Intent intent =new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT,"hey i have created Pune Tourism App..download from <playstore link> ");
+            startActivity(Intent.createChooser(intent, "share this news using..."));
+
         }
         return super.onOptionsItemSelected(item);
     }

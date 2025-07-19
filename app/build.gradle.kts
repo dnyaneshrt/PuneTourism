@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.infeanet.punetourism"
     compileSdk = 35
 
@@ -33,10 +34,18 @@ android {
         viewBinding = true
     }
 }
+//allprojects {
+//    repositories {
+//
+//        maven { url "https://jitpack.io" }// for toasty
+//    }
+//
+//}
 
 dependencies {
 
     implementation ("com.airbnb.android:lottie:6.6.6")
+//    implementation ("com.github.GrenderG:Toasty:1.5.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
