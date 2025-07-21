@@ -119,13 +119,17 @@ public class MainActivity extends AppCompatActivity {
 //            Toasty.success(MainActivity.this, "Success!", Toast.LENGTH_SHORT, true).show();
 //            Toasty
         }
+        if(id==R.id.menu_contactus)
+        {
+            Toast.makeText(this, "call functionality will be added soon..", Toast.LENGTH_SHORT).show();
+        }
         if(id==R.id.menu_share_app)
         {
             Intent intent =new Intent();
             intent.setAction(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TEXT,"hey i have created Pune Tourism App..download from <playstore link> ");
-            startActivity(Intent.createChooser(intent, "share this news using..."));
+            startActivity(Intent.createChooser(intent, "share this app using..."));
 
         }
         return super.onOptionsItemSelected(item);
@@ -157,7 +161,10 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
-        exitAlertDialog();
+        if(HomeFragment.backPressedListener!=null)
+        {
+            HomeFragment.backPressedListener.onBackPressed();
+        }
     }
 
 }

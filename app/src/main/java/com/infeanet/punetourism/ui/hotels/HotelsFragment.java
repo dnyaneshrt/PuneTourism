@@ -9,14 +9,16 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.infeanet.punetourism.R;
+import com.infeanet.punetourism.ui.home.BackPressedListener;
 
-public class HotelsFragment extends Fragment {
+public class HotelsFragment extends Fragment implements BackPressedListener {
 
     WebView webView;
     ProgressBar progressBar;
@@ -66,5 +68,10 @@ public class HotelsFragment extends Fragment {
         webView.getSettings().setBuiltInZoomControls(true);
 
         return view;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getContext(), "Back button pressed", Toast.LENGTH_SHORT).show();
     }
 }

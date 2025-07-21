@@ -10,16 +10,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.infeanet.punetourism.R;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment  implements BackPressedListener{
 
     WebView webView;
     ProgressBar progressBar;
+
+   public static BackPressedListener backPressedListener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,5 +62,44 @@ public class HomeFragment extends Fragment {
         webView.getSettings().setBuiltInZoomControls(true);
 
         return view;
+    }
+    @Override
+    public void onPause() {
+        backPressedListener=null;
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        backPressedListener=this;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(webView.canGoBack())
+        {
+            webView.goBack();
+        }else {
+            AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
+            builder.setTitle("Exit!");
+            builder.setIcon(R.drawable.baseline_home_24);
+            builder.setMessage("Do you want to exit App?");
+
+            builder.setPositiveButton("Yes", (dialog, which)-> {
+                        getActivity().finish();
+                    }
+            );
+            builder.setNegativeButton("No", (dialog, which)-> {
+                        dialog.dismiss();
+                    }
+            );
+
+            builder.setNeutralButton("Cancel", (dialog, which)-> {
+                        dialog.dismiss();
+                    }
+            );
+            builder.show();
+        }
     }
 }
